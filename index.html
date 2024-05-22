@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Typing</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }.container{
+            width: 300px;
+            overflow: hidden;
+        }
+        .container .text{
+            position: relative;
+            color: #4070F4;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .container .first-text{
+            color: #fff  ;
+        }
+        .container .sec-text::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            border-left: 2px solid #4070F4;
+            animation: animate 4s steps(12) infinite;
+        }
+        @keyframes animate{
+            40%, 60%{
+                left: calc(100% + 4px);
+            }
+            100%{
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="text first-text">I'm a </span>
+        <span class="text sec-text">Designer</span>
+    </div>
+</body>
+<script>
+    let text = document.querySelector(".sec-text");
+    const textload = () =>{
+        setTimeout(()=>{
+            text.textContent = "Developer";
+        },0);
+        setTimeout(()=>{
+            text.textContent = "Freelancer";
+        },4000);
+        setTimeout(()=>{
+            text.textContent = "Designer";
+        },8000);
+    }
+    textload();
+    setInterval(textload,12000)
+</script>
+</html>
